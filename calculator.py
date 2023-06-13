@@ -1,13 +1,13 @@
 # DO NOT modify this class
 class Node:
     def __init__(self, data):
-        self.data = data  
-        self.next = None 
+        self.data = data  # Stores the data value of the node
+        self.next = None  # Points to the next node in the linked list
     
     def __str__(self):
-        return "Node({})".format(self.data) 
+        return "Node({})".format(self.data)  # Return string representation of the node
 
-    __repr__ = __str__
+    __repr__ = __str__ #Uses the same string representation for the node when printing or debugging
                           
 
 
@@ -57,10 +57,13 @@ class Stack:
     """
 
     # DO NOT modify this method
+    # constructor method for stack class so method is called when an instance of stack class is created
     def __init__(self):
         self.top = None
     
     # DO NOT modify this method
+    # string representation method for the stack class 
+    #It iterates over all the elements of the stack, starting from the 'top', and returns a string representing the stack.
     def __str__(self):
         temp=self.top
         out=[]
@@ -71,6 +74,9 @@ class Stack:
         return ('Top: {}\nStack: {}'.format(self.top,out))
 
     # DO NOT modify this method
+    # This is the representation method for the Stack class. It is called by built-in functions 
+    # and operators that need a string representation of the object for debugging, such as the 'repr()' function.
+    # Here, it is set to be the same as the string representation method '__str__'.
     __repr__=__str__
 
 
@@ -100,19 +106,16 @@ class Stack:
 
 
     def push(self, data):
-        old = self.top
-
-        old.next = Node(data)
         ## YOUR CODE STARTS HERE
         # I create a variable for self.top
         # then I set self.top to the node(data)
         # then self.top.next is not top1
-##        top1 = self.top
-##
-##        self.top = Node(data)
-##
-##        self.top.next = top1
-##            
+        top1 = self.top
+
+        self.top = Node(data)
+
+        self.top.next = top1
+           
      
     def pop(self):
         ## YOUR CODE STARTS HERE
@@ -147,14 +150,18 @@ class Stack:
 class Calculator:
 
     # DO NOT modify this member
-    priority = { '+':1, '-':1, '*':2, '/':2, '^':3 }
+    priority = { '+':1, '-':1, '*':2, '/':2, '^':3 } # Here I have a dictionary with operators that have priority levels
     
     # DO NOT modify this method
+    # Here I create an instance of the calculator class
+    # It initializes the private instance variable '__expr' to None. This variable is intended to hold an 
+    # expression that the calculator will work with.
     def __init__(self):
         self.__expr = None
 
         
     # DO NOT modify this method
+    #property decorator to create a getter method for the '__expr' variable. 
     @property
     def expr(self):
         return self.__expr
